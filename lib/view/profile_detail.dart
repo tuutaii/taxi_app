@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
+import 'package:taxi_app/widgets/accounts.dart';
+import 'package:taxi_app/widgets/details.dart';
 
 class ProfileDetail extends StatefulWidget {
   const ProfileDetail({Key? key}) : super(key: key);
@@ -9,9 +11,84 @@ class ProfileDetail extends StatefulWidget {
 }
 
 class _ProfileDetailState extends State<ProfileDetail> {
+  var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      floatingActionButton: FloatingActionButton(
+        elevation: 0,
+        backgroundColor: const Color(0xffFECC2A),
+        onPressed: () {},
+        child: const Icon(Icons.add, color: Colors.white), //icon inside button
+      ),
+
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      //floating action button location to left
+
+      bottomNavigationBar: SizedBox(
+        height: 71,
+        child: BottomAppBar(
+          elevation: 0,
+          color: const Color(0xffF5F5F5),
+          shape: const CircularNotchedRectangle(),
+          notchMargin: 10,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 34.28),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.local_taxi_outlined,
+                        color: Color(0xff9EA1B0),
+                        size: 30,
+                      ),
+                      onPressed: () {},
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.search,
+                        color: Color(0xff9EA1B0),
+                        size: 30,
+                      ),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.sms_outlined,
+                        color: Color(0xff9EA1B0),
+                        size: 30,
+                      ),
+                      onPressed: () {},
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.person_outline,
+                        color: Colors.grey,
+                        size: 30,
+                      ),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 39.43),
         child: Column(
@@ -49,19 +126,23 @@ class _ProfileDetailState extends State<ProfileDetail> {
             const Center(
               child: Text(
                 'Patrick John',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
             ),
             const Center(
               child: Text(
                 'New User',
-                style: TextStyle(color: Color(0xff757575)),
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xff757575)),
               ),
             ),
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(top: 25.53, bottom: 35.47),
                 child: FlutterToggleTab(
+                  selectedIndex: _selectedIndex,
                   width: 80,
                   borderRadius: 16,
                   height: 46,
@@ -72,160 +153,19 @@ class _ProfileDetailState extends State<ProfileDetail> {
                   unSelectedTextStyle: const TextStyle(
                     color: Color(0xff757575),
                   ),
-                  labels: ['Details', 'Account'],
+                  labels: const ['Details', 'Account'],
                   selectedLabelIndex: (index) {
-                    print("Selected Index $index");
+                    setState(() {
+                      _selectedIndex = index;
+                    });
                   },
-                  selectedIndex: 0,
                 ),
               ),
             ),
-            const Text(
-              'About you',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text('Write mini bio'),
-                      Icon(
-                        Icons.chevron_right_outlined,
-                        color: Color(0xffB4B4B4),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 22,
-                  ),
-                  Container(
-                    height: 1,
-                    width: double.infinity,
-                    decoration: const BoxDecoration(color: Color(0xffB4B4B4)),
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 28.15,
-            ),
-            const Text(
-              'Verification',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24.29),
-                        child: Image.asset('assets/images/id.png'),
-                      ),
-                      const Text('Verify my ID'),
-                      const Spacer(),
-                      const Icon(
-                        Icons.chevron_right_outlined,
-                        color: Color(0xffB4B4B4),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 22),
-                  child: Container(
-                    height: 1,
-                    width: double.infinity,
-                    decoration: const BoxDecoration(color: Color(0xffB4B4B4)),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24.29),
-                        child: Image.asset('assets/images/mobile.png'),
-                      ),
-                      const Text('Add my phone'),
-                      const Spacer(),
-                      const Icon(
-                        Icons.chevron_right_outlined,
-                        color: Color(0xffB4B4B4),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 22),
-                  child: Container(
-                    height: 1,
-                    width: double.infinity,
-                    decoration: const BoxDecoration(color: Color(0xffB4B4B4)),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24.29),
-                        child: Image.asset('assets/images/@.png'),
-                      ),
-                      const Text('Add my e-mail'),
-                      const Spacer(),
-                      const Icon(
-                        Icons.chevron_right_outlined,
-                        color: Color(0xffB4B4B4),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 22),
-                  child: Container(
-                    height: 1,
-                    width: double.infinity,
-                    decoration: const BoxDecoration(color: Color(0xffB4B4B4)),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 24.15,
-            ),
-            const Text(
-              'Car',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            Row(
-              children: [
-                IconButton(
-                  iconSize: 32,
-                  icon: const Icon(
-                    Icons.add_circle,
-                    color: Color(0xffFECC2A),
-                  ),
-                  onPressed: () {},
-                ),
-                const Text('Add car')
-              ],
-            ),
-            const Expanded(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: EdgeInsets.only(bottom: 27.53),
-                  child: Text(
-                    'See my public Profile',
-                    style: TextStyle(
-                        color: Color(0xffFED428), fontWeight: FontWeight.bold),
-                  ),
-                ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Container(
+                    child: _selectedIndex == 0 ? DetailsTab() : AccountsTab()),
               ),
             ),
           ],

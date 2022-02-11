@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:taxi_app/view/forgot_password.dart';
+import 'package:taxi_app/view/reset_password.dart';
 
 class VerifyNumber extends StatefulWidget {
   const VerifyNumber({Key? key}) : super(key: key);
@@ -19,7 +22,9 @@ class _VerifyNumberState extends State<VerifyNumber> {
         ),
         centerTitle: true,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.to(() => const ForgotPassword());
+          },
           icon: const Icon(
             Icons.arrow_back_ios_new,
             color: Colors.black,
@@ -29,8 +34,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
         backgroundColor: Colors.white,
         elevation: 1,
       ),
-      resizeToAvoidBottomInset: false,
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
@@ -41,11 +45,14 @@ class _VerifyNumberState extends State<VerifyNumber> {
             ),
             const Text(
               'Just one thing',
-              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 26, fontWeight: FontWeight.w700),
             ),
             const Text(
               'Enter OTP code and recent your password',
-              style: TextStyle(fontSize: 14, color: Color(0xffB4B4B4)),
+              style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xffB4B4B4)),
               textAlign: TextAlign.center,
             ),
             const SizedBox(
@@ -57,7 +64,10 @@ class _VerifyNumberState extends State<VerifyNumber> {
                 margin: const EdgeInsets.symmetric(horizontal: 30),
                 child: const Text(
                   'Please enter the 4 digit code you recived by SMS',
-                  style: TextStyle(fontSize: 14, color: Color(0xffB4B4B4)),
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xffB4B4B4)),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -72,7 +82,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
                   // ignore: avoid_print
                   print(value);
                 },
-                animationDuration: const Duration(milliseconds: 300),
+                animationDuration: const Duration(milliseconds: 200),
                 enableActiveFill: true,
                 pinTheme: PinTheme(
                     errorBorderColor: Colors.red,
@@ -83,32 +93,32 @@ class _VerifyNumberState extends State<VerifyNumber> {
                     selectedColor: const Color(0xffF1F2F6),
                     selectedFillColor: Colors.grey,
                     shape: PinCodeFieldShape.box,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(5),
                     fieldHeight: 63,
                     fieldWidth: 64),
               ),
             ),
-            Expanded(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 32.57, vertical: 99.06),
-                  child: SizedBox(
-                    height: 54.47,
-                    width: double.infinity,
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            primary: const Color(0xffFECC2A)),
-                        onPressed: () {},
-                        child: const Text(
-                          'Submit',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
-                        )),
-                  ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 32.57, vertical: 99.06),
+                child: SizedBox(
+                  height: 54.47,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0, primary: const Color(0xffFECC2A)),
+                      onPressed: () {
+                        Get.to(() => const ResetPassword());
+                      },
+                      child: const Text(
+                        'Submit',
+                        style: TextStyle(
+                            color: Color(0xff1B1C1C),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
+                      )),
                 ),
               ),
             )

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:taxi_app/view/forgot_password.dart';
+import 'package:taxi_app/view/profile_detail.dart';
+import 'package:taxi_app/view/sign_up.dart';
 import 'package:taxi_app/widgets/pass_field.dart';
 
 class LogInPage extends StatefulWidget {
@@ -16,6 +21,7 @@ class _LogInPageState extends State<LogInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         padding: const EdgeInsets.only(
             left: 32.52, right: 32.52, bottom: 30, top: 30),
@@ -28,12 +34,13 @@ class _LogInPageState extends State<LogInPage> {
             const Center(
               child: Text(
                 'Welcome back!',
-                style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900),
+                style: TextStyle(fontSize: 26, fontWeight: FontWeight.w700),
               ),
             ),
             const Text(
               'Enter your creditional to continue!',
-              style: TextStyle(color: Color(0xffB4B4B4)),
+              style: TextStyle(
+                  fontWeight: FontWeight.w400, color: Color(0xffB4B4B4)),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16.33),
@@ -49,33 +56,33 @@ class _LogInPageState extends State<LogInPage> {
                 ),
               ),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 28),
-            //   child: TextFormField(
-            //     style: const TextStyle(fontSize: 19, color: Color(0xFF0D1F3C)),
-            //     decoration: const InputDecoration(
-            //       border: OutlineInputBorder(),
-            //       errorText: 'Invalid phone number or password',
-            //       suffixIcon: Icon(
-            //         Icons.check_circle,
-            //         color: Colors.green,
-            //       ),
-            //       hintStyle: TextStyle(
-            //         fontSize: 15,
-            //         fontWeight: FontWeight.w400,
-            //         color: Colors.grey,
-            //       ),
-            //     ),
-            //   ),
-            // ),
             Padding(
               padding: const EdgeInsets.only(top: 28),
-              child: InternationalPhoneNumberInput(
-                onInputChanged: (PhoneNumber number) {},
-                selectorTextStyle: const TextStyle(color: Colors.black),
-                keyboardType: const TextInputType.numberWithOptions(
-                    signed: true, decimal: true),
-                inputBorder: const OutlineInputBorder(),
+              child: IntlPhoneField(
+                dropdownIconPosition: IconPosition.trailing,
+                dropdownIcon: const Icon(
+                  Icons.keyboard_arrow_down_outlined,
+                  color: Colors.black,
+                ),
+                disableLengthCheck: true,
+                initialCountryCode: 'US',
+                invalidNumberMessage: 'Invalid phone number or password',
+                flagsButtonPadding: const EdgeInsets.all(10),
+                dropdownTextStyle: const TextStyle(color: Colors.white),
+                decoration: const InputDecoration(
+                  suffixIcon: Icon(
+                    Icons.check_circle,
+                    color: Color(0xff49E46B),
+                  ),
+                  labelText: 'Phone Number',
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(),
+                  ),
+                ),
+                onChanged: (phone) {
+                  // ignore: avoid_print
+                  print(phone.completeNumber);
+                },
               ),
             ),
             const Padding(
@@ -87,10 +94,15 @@ class _LogInPageState extends State<LogInPage> {
             Container(
               alignment: Alignment.topRight,
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => const ForgotPassword());
+                  },
                   child: const Text(
                     'Forgot your password?',
-                    style: TextStyle(fontSize: 10, color: Colors.black),
+                    style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black),
                   )),
             ),
             Padding(
@@ -100,14 +112,16 @@ class _LogInPageState extends State<LogInPage> {
                 width: double.infinity,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: const Color(0xffFECC2A)),
-                    onPressed: () {},
+                        elevation: 0, primary: const Color(0xffFECC2A)),
+                    onPressed: () {
+                      Get.to(() => const ProfileDetail());
+                    },
                     child: const Text(
                       'Sign In',
                       style: TextStyle(
-                          color: Colors.black,
+                          color: Color(0xff1B1C1C),
                           fontSize: 14,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.w500),
                     )),
               ),
             ),
@@ -119,15 +133,21 @@ class _LogInPageState extends State<LogInPage> {
                   children: [
                     const Text(
                       'Don’t have an account?',
-                      style: TextStyle(fontSize: 14),
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(() => const SigUpPage());
+                        },
                         child: const Text(
                           'Sign Up',
                           style: TextStyle(
                               color: Color(0xffFECC2A),
-                              fontWeight: FontWeight.bold),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400),
                         ))
                   ],
                 ),

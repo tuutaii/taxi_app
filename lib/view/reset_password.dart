@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:taxi_app/view/log_in.dart';
+import 'package:taxi_app/view/verify_number.dart';
 import 'package:taxi_app/widgets/text_field.dart';
 
 class ResetPassword extends StatefulWidget {
@@ -19,7 +22,9 @@ class _ResetPasswordState extends State<ResetPassword> {
         ),
         centerTitle: true,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.to(() => const VerifyNumber());
+          },
           icon: const Icon(
             Icons.arrow_back_ios_new,
             color: Colors.black,
@@ -40,7 +45,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             const Center(
               child: Text(
                 'Reset Password',
-                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 26, fontWeight: FontWeight.w700),
               ),
             ),
             Container(
@@ -69,14 +74,16 @@ class _ResetPasswordState extends State<ResetPassword> {
                     width: double.infinity,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: const Color(0xffFECC2A)),
-                        onPressed: () {},
+                            elevation: 0, primary: const Color(0xffFECC2A)),
+                        onPressed: () {
+                          Get.to(() => const LogInPage());
+                        },
                         child: const Text(
                           'Save',
                           style: TextStyle(
-                              color: Colors.black,
+                              color: Color(0xff1B1C1C),
                               fontSize: 14,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.w400),
                         )),
                   ),
                 ),

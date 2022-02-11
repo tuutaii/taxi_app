@@ -10,7 +10,8 @@ class TextFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: const TextStyle(fontSize: 19, color: Color(0xFF0D1F3C)),
+      style: const TextStyle(
+          fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xFF0D1F3C)),
       decoration: InputDecoration(
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(

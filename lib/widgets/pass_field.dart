@@ -21,7 +21,10 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
         style: const TextStyle(fontSize: 19, color: Colors.black),
         decoration: InputDecoration(
           labelText: widget.text,
-          labelStyle: const TextStyle(color: Color(0xffB4B4B4)),
+          labelStyle: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              color: Color(0xFFB4B4B4)),
           errorText: 'Min 6 character',
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(
@@ -37,7 +40,7 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
           suffixIcon: IconButton(
             icon: Icon(
               _isObscure == false ? Icons.visibility_off : Icons.visibility,
-              color: Colors.black,
+              color: const Color(0xff130F26),
             ),
             onPressed: () {
               setState(() {
