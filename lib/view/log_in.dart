@@ -59,16 +59,17 @@ class _LogInPageState extends State<LogInPage> {
             Padding(
               padding: const EdgeInsets.only(top: 28),
               child: IntlPhoneField(
-                dropdownIconPosition: IconPosition.trailing,
                 dropdownIcon: const Icon(
                   Icons.keyboard_arrow_down_outlined,
                   color: Colors.black,
                 ),
+                flagsButtonPadding: const EdgeInsets.symmetric(horizontal: 18),
+                dropdownIconPosition: IconPosition.trailing,
+                showDropdownIcon: true,
+                showCountryFlag: true,
                 disableLengthCheck: true,
                 initialCountryCode: 'US',
                 invalidNumberMessage: 'Invalid phone number or password',
-                flagsButtonPadding: const EdgeInsets.all(10),
-                dropdownTextStyle: const TextStyle(color: Colors.white),
                 decoration: const InputDecoration(
                   suffixIcon: Icon(
                     Icons.check_circle,
@@ -80,7 +81,6 @@ class _LogInPageState extends State<LogInPage> {
                   ),
                 ),
                 onChanged: (phone) {
-                  // ignore: avoid_print
                   print(phone.completeNumber);
                 },
               ),
@@ -104,6 +104,11 @@ class _LogInPageState extends State<LogInPage> {
                         fontWeight: FontWeight.w400,
                         color: Colors.black),
                   )),
+            ),
+            Container(
+              height: 30.5,
+              width: 1,
+              decoration: const BoxDecoration(color: Color(0xffB4B4B4)),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 39.53),

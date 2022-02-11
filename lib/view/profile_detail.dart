@@ -142,6 +142,7 @@ class _ProfileDetailState extends State<ProfileDetail> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 25.53, bottom: 35.47),
                 child: FlutterToggleTab(
+                  isShadowEnable: true,
                   selectedIndex: _selectedIndex,
                   width: 80,
                   borderRadius: 16,
@@ -150,9 +151,8 @@ class _ProfileDetailState extends State<ProfileDetail> {
                   selectedTextStyle: const TextStyle(
                     color: Colors.white,
                   ),
-                  unSelectedTextStyle: const TextStyle(
-                    color: Color(0xff757575),
-                  ),
+                  unSelectedTextStyle:
+                      const TextStyle(color: Color(0xff757575)),
                   labels: const ['Details', 'Account'],
                   selectedLabelIndex: (index) {
                     setState(() {

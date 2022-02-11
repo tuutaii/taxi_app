@@ -31,6 +31,11 @@ class _DetailsTabState extends State<DetailsTab> {
             children: [Text('data')],
           ),
         ),
+        Container(
+          height: 1,
+          width: double.infinity,
+          decoration: const BoxDecoration(color: Color(0xffB4B4B4)),
+        ),
         const SizedBox(
           height: 28.15,
         ),
@@ -39,45 +44,69 @@ class _DetailsTabState extends State<DetailsTab> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         Column(
-          children: const [
-            ExpansionTile(
-              tilePadding: EdgeInsets.only(
-                left: 13,
+          children: [
+            Theme(
+              data: theme,
+              child: const ExpansionTile(
+                tilePadding: EdgeInsets.only(
+                  left: 13,
+                ),
+                leading: Icon(
+                  Icons.verified_outlined,
+                ),
+                title: Text(
+                  'Verify my ID',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                ),
+                children: [Text('data')],
               ),
-              leading: Icon(
-                Icons.verified_outlined,
-              ),
-              title: Text(
-                'Verify my ID',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-              ),
-              children: [Text('data')],
             ),
-            ExpansionTile(
-              tilePadding: EdgeInsets.only(
-                left: 13,
-              ),
-              leading: Icon(
-                Icons.phone_iphone_outlined,
-              ),
-              title: Text(
-                'Add my phone',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-              ),
-              children: [Text('data')],
+            Container(
+              height: 1,
+              width: double.infinity,
+              decoration: const BoxDecoration(color: Color(0xffB4B4B4)),
             ),
-            ExpansionTile(
-              tilePadding: EdgeInsets.only(
-                left: 13,
+            Theme(
+              data: theme,
+              child: const ExpansionTile(
+                tilePadding: EdgeInsets.only(
+                  left: 13,
+                ),
+                leading: Icon(
+                  Icons.phone_iphone_outlined,
+                ),
+                title: Text(
+                  'Add my phone',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                ),
+                children: [Text('data')],
               ),
-              leading: Icon(
-                Icons.alternate_email_outlined,
+            ),
+            Container(
+              height: 1,
+              width: double.infinity,
+              decoration: const BoxDecoration(color: Color(0xffB4B4B4)),
+            ),
+            Theme(
+              data: theme,
+              child: const ExpansionTile(
+                tilePadding: EdgeInsets.only(
+                  left: 13,
+                ),
+                leading: Icon(
+                  Icons.alternate_email_outlined,
+                ),
+                title: Text(
+                  'Add my e-mail',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                ),
+                children: [Text('data')],
               ),
-              title: Text(
-                'Add my e-mail',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-              ),
-              children: [Text('data')],
+            ),
+            Container(
+              height: 1,
+              width: double.infinity,
+              decoration: const BoxDecoration(color: Color(0xffB4B4B4)),
             ),
           ],
         ),
